@@ -29,8 +29,13 @@ class MainActivity : AppCompatActivity() {
             NavigationUI.setupWithNavController(it, navController)
         }
     }
-
+    // connect between navController + toolbar ....
     private fun setupActionBar(navController: NavController) {
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
+    // Up back button will work on this method
+    override fun onSupportNavigateUp(): Boolean {
+        return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp()
+    }
+
 }
