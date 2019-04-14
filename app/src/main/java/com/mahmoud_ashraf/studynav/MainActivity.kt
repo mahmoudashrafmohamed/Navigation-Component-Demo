@@ -13,9 +13,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(toolbar)
+
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
         setupBottomNavMenu(navController)
+
+        // connect between navController + toolbar ....
+        setupActionBar(navController)
     }
 
     // connection between bottom_nav + navController ......
@@ -23,5 +28,9 @@ class MainActivity : AppCompatActivity() {
         bottom_nav?.let {
             NavigationUI.setupWithNavController(it, navController)
         }
+    }
+
+    private fun setupActionBar(navController: NavController) {
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 }

@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 
 import com.mahmoud_ashraf.studynav.R
+import kotlinx.android.synthetic.main.fragment_photos.view.*
 
 
 class PhotosFragment : Fragment() {
@@ -17,7 +19,13 @@ class PhotosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_photos, container, false)
+        val v =  inflater.inflate(R.layout.fragment_photos, container, false)
+
+       v.button_home.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.homeFragment)
+        }
+
+        return v
     }
 
 
